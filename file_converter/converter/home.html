@@ -1,0 +1,21 @@
+<form action="/docx-to-pdf/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="docx_file">
+    <button type="submit">Convert DOCX to PDF</button>
+</form>
+<!-- Repeat for other conversions -->
+<form action="/pdf-to-docx/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="pdf_file">
+    <button type="submit">Convert PDF to DOCX</button>
+</form>
+<form action="/pdf-to-txt/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="pdf_file">
+    <button type="submit">Convert PDF to TXT</button>
+</form>
+<form action="/txt-to-pdf/" method="POST" enctype="multipart/form-data">   
+    {% csrf_token %}
+    <input type="file" name="txt_file">
+    <button type="submit">Convert TXT to PDF</button>
+</form>
